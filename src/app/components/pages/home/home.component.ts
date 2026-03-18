@@ -1,6 +1,5 @@
 import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchBarComponent } from '../../search-bar/search-bar.component';
 import { HeroComponent } from '../../hero/hero.component';
 import { FilterSidebarComponent, FilterState } from '../../filter-sidebar/filter-sidebar.component';
 import { ResourceCardComponent } from '../../cards/cards.component';
@@ -20,7 +19,6 @@ interface ResourceItem {
   standalone: true,
   imports: [
     CommonModule,
-    SearchBarComponent,
     FilterSidebarComponent,
     ResourceCardComponent,
     HeroComponent,
