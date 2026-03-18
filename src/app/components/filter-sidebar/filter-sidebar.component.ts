@@ -1,56 +1,76 @@
 import { Component, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 export interface FilterState {
   categories: string[];
   types: string[];
+  languages: string[];
   levels: string[];
 }
+
+type FilterGroup = 'categories' | 'types' | 'languages' | 'levels';
+
+type FilterSection = {
+  title: string;
+  key: FilterGroup;
+  options: string[];
+};
 
 @Component({
   selector: 'app-filter-sidebar',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './filter-sidebar.component.html',
 })
 export class FilterSidebarComponent {
   filterChanged = output<FilterState>();
 
+  readonly sections: FilterSection[] = [
+    {
+      title: 'Category',
+      key: 'categories',
+      options: ['Frontend', 'Backend', 'DevOps', 'UX/UI', 'Career', 'Tools'],
+    },
+    {
+      title: 'Type',
+      key: 'types',
+      options: ['Article', 'Video', 'Course', 'Tutorial', 'Podcast', 'Documentation'],
+    },
+    {
+      title: 'Code Language',
+      key: 'languages',
+      options: ['JavaScript', 'TypeScript', 'Angular', 'CSS', 'Python', 'Java', 'C#', 'Go', 'Ruby'],
+    },
+    {
+      title: 'Level',
+      key: 'levels',
+      options: ['Beginner', 'Intermediate', 'Job Ready'],
+    },
+  ];
+
   readonly selectedCategories = signal<Set<string>>(new Set());
   readonly selectedTypes = signal<Set<string>>(new Set());
+  readonly selectedLanguages = signal<Set<string>>(new Set());
   readonly selectedLevels = signal<Set<string>>(new Set());
 
-  onCategoryChange(category: string, isChecked: boolean): void {
-    const updated = new Set(this.selectedCategories());
-    if (isChecked) {
-      updated.add(category);
-    } else {
-      updated.delete(category);
-    }
-    this.selectedCategories.set(updated);
-    this.emitFilter();
-  }
+  onFilterChange(group: FilterGroup, value: string, isChecked: boolean): void {
+    const selectedMap = {
+      categories: this.selectedCategories,
+      types: this.selectedTypes,
+      languages: this.selectedLanguages,
+      levels: this.selectedLevels,
+    };
 
-  onTypeChange(type: string, isChecked: boolean): void {
-    const updated = new Set(this.selectedTypes());
-    if (isChecked) {
-      updated.add(type);
-    } else {
-      updated.delete(type);
-    }
-    this.selectedTypes.set(updated);
-    this.emitFilter();
-  }
+    const currentSignal = selectedMap[group];
+    const updated = new Set(currentSignal());
 
-  onLevelChange(level: string, isChecked: boolean): void {
-    const updated = new Set(this.selectedLevels());
     if (isChecked) {
-      updated.add(level);
+      updated.add(value);
     } else {
-      updated.delete(level);
+      updated.delete(value);
     }
-    this.selectedLevels.set(updated);
+
+    currentSignal.set(updated);
     this.emitFilter();
   }
 
@@ -58,6 +78,7 @@ export class FilterSidebarComponent {
     this.filterChanged.emit({
       categories: Array.from(this.selectedCategories()),
       types: Array.from(this.selectedTypes()),
+      languages: Array.from(this.selectedLanguages()),
       levels: Array.from(this.selectedLevels()),
     });
   }

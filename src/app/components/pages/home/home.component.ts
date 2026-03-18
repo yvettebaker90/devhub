@@ -8,6 +8,7 @@ interface ResourceItem {
   title: string;
   description: string;
   category: string;
+  language?: string;
   level: string;
   link: string;
   type: string;
@@ -28,13 +29,15 @@ export class HomeComponent {
   readonly searchTerm = signal('');
   readonly selectedCategories = signal<string[]>([]);
   readonly selectedTypes = signal<string[]>([]);
+  readonly selectedLanguages = signal<string[]>([]);
   readonly selectedLevels = signal<string[]>([]);
 
   readonly resources = signal<ResourceItem[]>([
     {
       title: 'Angular Official Docs',
       description: 'The official documentation for Angular concepts and APIs.',
-      category: 'Angular',
+      category: 'Frontend',
+      language: 'Angular',
       level: 'Beginner',
       link: 'https://angular.dev',
       type: 'Documentation',
@@ -42,7 +45,8 @@ export class HomeComponent {
     {
       title: 'TypeScript Handbook',
       description: 'Learn TypeScript basics and core language features.',
-      category: 'TypeScript',
+      category: 'Frontend',
+      language: 'TypeScript',
       level: 'Beginner',
       link: 'https://www.typescriptlang.org/docs/handbook/intro.html',
       type: 'Documentation',
@@ -50,7 +54,8 @@ export class HomeComponent {
     {
       title: 'CSS Tricks Guides',
       description: 'Practical guides for modern CSS layout and styling.',
-      category: 'CSS',
+      category: 'Frontend',
+      language: 'CSS',
       level: 'Intermediate',
       link: 'https://css-tricks.com/guides/',
       type: 'Article',
@@ -58,7 +63,8 @@ export class HomeComponent {
     {
       title: 'RxJS Documentation',
       description: 'Comprehensive guide to reactive programming with RxJS.',
-      category: 'TypeScript',
+      category: 'Frontend',
+      language: 'JavaScript',
       level: 'Intermediate',
       link: 'https://rxjs.dev/guide/overview',
       type: 'Documentation',
@@ -66,7 +72,8 @@ export class HomeComponent {
     {
       title: 'Angular Material',
       description: 'UI component library for Angular applications.',
-      category: 'Angular',
+      category: 'Frontend',
+      language: 'Angular',
       level: 'Intermediate',
       link: 'https://material.angular.io',
       type: 'Library',
@@ -74,7 +81,8 @@ export class HomeComponent {
     {
       title: 'Advanced TypeScript Types',
       description: 'Deep dive into advanced TypeScript type features.',
-      category: 'TypeScript',
+      category: 'Frontend',
+      language: 'TypeScript',
       level: 'Advanced',
       link: 'https://www.typescriptlang.org/docs/handbook/advanced-types.html',
       type: 'Documentation',
@@ -90,13 +98,15 @@ export class HomeComponent {
     return this.resources().filter((resource: ResourceItem) => {
       const matchesCategory =
         categories.length === 0 || categories.includes(resource.category);
+      const matchesType = types.length === 0 || types.includes(resource.type);
       const matchesLevel = levels.length === 0 || levels.includes(resource.level);
+      const matchesLanguage = this.selectedLanguages().length === 0 || this.selectedLanguages().includes(resource.language || '');
       const matchesSearch =
         term.length === 0 ||
         resource.title.toLowerCase().includes(term) ||
         resource.description.toLowerCase().includes(term);
 
-      return matchesCategory && matchesLevel && matchesSearch;
+      return matchesCategory && matchesType && matchesLevel && matchesLanguage && matchesSearch;
     });
   });
 
@@ -107,6 +117,7 @@ export class HomeComponent {
   updateFilters(filterState: FilterState): void {
     this.selectedCategories.set(filterState.categories);
     this.selectedTypes.set(filterState.types);
+    this.selectedLanguages.set(filterState.languages);
     this.selectedLevels.set(filterState.levels);
   }
 }
