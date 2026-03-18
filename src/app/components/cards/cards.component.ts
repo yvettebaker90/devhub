@@ -15,5 +15,7 @@ export class ResourceCardComponent {
   readonly level = input.required<string>();
   readonly link = input.required<string>();
   readonly type = input.required<string>();
+  readonly author = input<string>('Unknown author');
+  readonly date = input<string | Date>(new Date());
   readonly isCommunityPick = input<boolean>(false);
 }
