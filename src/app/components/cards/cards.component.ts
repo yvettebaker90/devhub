@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './resource-card.component.html',
+  templateUrl: './cards.component.html',
 })
 export class ResourceCardComponent {
   readonly title = input.required<string>();

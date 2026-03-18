@@ -1,9 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
-
-import { FilterSidebarComponent } from '../../components/filter-sidebar/filter-sidebar.component';
-import { HeaderComponent } from '../../components/header/header.component';
-import { ResourceCardComponent } from '../../components/resource-card/resource-card.component';
-import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
+import { Component, signal, computed } from '@angular/core';
+import { SearchBarComponent } from '../../search-bar/search-bar.component';
+import { FilterSidebarComponent } from '../../filter-sidebar/filter-sidebar.component';
+import { ResourceCardComponent } from '../../resource-card/resource-card.component';
 
 interface ResourceItem {
   title: string;
@@ -14,17 +12,15 @@ interface ResourceItem {
 }
 
 @Component({
-  selector: 'app-resource-library-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    HeaderComponent,
-    SearchBarComponent,
+  selector: 'app-home',
+  standalone: true,
+  imports: [    SearchBarComponent,
     FilterSidebarComponent,
     ResourceCardComponent,
   ],
-  templateUrl: './resource-library.page.html',
+  templateUrl: './home.component.html',
 })
-export class ResourceLibraryPageComponent {
+export class HomeComponent {
   readonly searchTerm = signal('');
   readonly selectedCategory = signal('All');
 
@@ -56,7 +52,7 @@ export class ResourceLibraryPageComponent {
     const term = this.searchTerm().toLowerCase().trim();
     const category = this.selectedCategory();
 
-    return this.resources().filter((resource) => {
+    return this.resources().filter((resource: ResourceItem) => {
       const matchesCategory = category === 'All' || resource.category === category;
       const matchesSearch =
         term.length === 0 ||
@@ -75,3 +71,4 @@ export class ResourceLibraryPageComponent {
     this.selectedCategory.set(category);
   }
 }
+
