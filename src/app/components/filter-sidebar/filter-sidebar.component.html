@@ -1,8 +1,26 @@
-<aside>
-  <h2>Filter</h2>
-  <ul>
-    <li><button (click)="selectCategory('Frontend')">Frontend</button></li>
-    <li><button (click)="selectCategory('Backend')">Backend</button></li>
-    <li><button (click)="selectCategory('DevOps')">DevOps</button></li>
-  </ul>
+<aside
+  class="h-fit rounded-md border border-white/10 bg-[#0b1220] p-6 text-white"
+>
+  <h2 class="mb-6 text-lg font-semibold">Filters</h2>
+
+  @for (section of sections; track section.key) {
+    <div class="mb-6">
+      <h3 class="mb-3 text-xs font-semibold uppercase tracking-widest text-slate-400">
+        {{ section.title }}
+      </h3>
+
+      <div class="space-y-2">
+        @for (option of section.options; track option) {
+          <label class="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              class="accent-violet-500"
+              (change)="onFilterChange(section.key, option, $any($event.target).checked)"
+            />
+            {{ option }}
+          </label>
+        }
+      </div>
+    </div>
+  }
 </aside>

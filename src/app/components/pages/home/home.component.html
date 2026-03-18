@@ -5,16 +5,23 @@
     <app-search-bar (searchChanged)="updateSearch($event)" />
 
     <div class="grid gap-6 lg:grid-cols-[260px_1fr]">
-      <app-filter-sidebar (categoryChanged)="updateCategory($event)" />
+      <app-filter-sidebar (filterChanged)="updateFilters($event)" />
 
       <div class="flex flex-col gap-6">
         @for (resource of filteredResources(); track resource.title) {
-        <app-resource-card [title]="resource.title" [description]="resource.description" [category]="resource.category"
-          [level]="resource.level" [link]="resource.link" />
+          <app-resource-card
+            [title]="resource.title"
+            [description]="resource.description"
+            [category]="resource.category"
+            [language]="resource.language ?? ''"
+            [level]="resource.level"
+            [link]="resource.link"
+            [type]="resource.type"
+          />
         } @empty {
-        <p class="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
-          No resources match your filters yet.
-        </p>
+          <p class="rounded-xl p-4 text-sm text-white">
+            No resources match your filters yet.
+          </p>
         }
       </div>
     </div>
