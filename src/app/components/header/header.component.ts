@@ -9,6 +9,12 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent {
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
   onSignIn(): void {
     console.log('Sign in clicked');
   }
