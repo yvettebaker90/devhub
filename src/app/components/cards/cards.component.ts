@@ -14,5 +14,6 @@ export class ResourceCardComponent {
   readonly category = input.required<string>();
   readonly level = input.required<string>();
   readonly link = input.required<string>();
+  readonly type = input.required<string>();
   readonly isCommunityPick = input<boolean>(false);
 }
