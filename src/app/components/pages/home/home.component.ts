@@ -1,5 +1,4 @@
 import { Component, signal, computed } from '@angular/core';
-import { HeaderComponent } from '../../header/header.component';
 import { SearchBarComponent } from '../../search-bar/search-bar.component';
 import { FilterSidebarComponent } from '../../filter-sidebar/filter-sidebar.component';
 import { ResourceCardComponent } from '../../resource-card/resource-card.component';
@@ -15,9 +14,7 @@ interface ResourceItem {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [
-    HeaderComponent,
-    SearchBarComponent,
+  imports: [    SearchBarComponent,
     FilterSidebarComponent,
     ResourceCardComponent,
   ],
@@ -74,3 +71,4 @@ export class HomeComponent {
     this.selectedCategory.set(category);
   }
 }
+

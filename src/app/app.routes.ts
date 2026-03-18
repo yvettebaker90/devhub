@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/pages/home/home.component';
-import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
 	{
@@ -12,7 +10,15 @@ export const routes: Routes = [
 		path: 'resources',
 		loadComponent: () =>
 			import(
-				'./features/resources/pages/resource-library/resource-library.page'
-			).then((m) => m.ResourceLibraryPageComponent),
+				'./components/pages/home/home.component'
+			).then((m) => m.HomeComponent),
+	},
+	{
+		path: 'dashboard',
+		loadComponent: () =>
+			import(
+				'./components/pages/dashboard/dashboard.component'
+			).then((m) => m.DashboardComponent),
 	},
 ];
+
