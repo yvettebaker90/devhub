@@ -3,7 +3,16 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: '**', redirectTo: '' }
+	{
+		path: '',
+		pathMatch: 'full',
+		redirectTo: 'resources',
+	},
+	{
+		path: 'resources',
+		loadComponent: () =>
+			import(
+				'./features/resources/pages/resource-library/resource-library.page'
+			).then((m) => m.ResourceLibraryPageComponent),
+	},
 ];
