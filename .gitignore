@@ -28,6 +28,9 @@ yarn-error.log
 !.vscode/extensions.json
 !.vscode/mcp.json
 .history/*
+# Angular cache och TypeScript buildinfo
+.angular/
+*.tsbuildinfo
 
 # Miscellaneous
 /.angular/cache
