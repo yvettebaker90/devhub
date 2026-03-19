@@ -1,0 +1,110 @@
+<article
+  class="rounded-md border border-white/10 bg-[#0b1220] p-7 text-white shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition hover:-translate-y-1 hover:border-violet-500/30"
+>
+  <div class="relative mb-5">
+    <div class="flex min-w-0 flex-wrap gap-2 sm:pr-48">
+      <span [class]="categoryBadgeClass()">
+        {{ category() }}
+      </span>
+
+      @if (language()) {
+        <span [class]="languageBadgeClass()">
+          {{ language() }}
+        </span>
+      }
+
+      <span [class]="levelBadgeClass()">
+        {{ level() }}
+      </span>
+    </div>
+
+    <div class="mt-3 flex flex-wrap gap-2 sm:absolute sm:right-0 sm:top-0 sm:mt-0 sm:flex-col sm:items-end">
+      <span [class]="typeBadgeClass()">
+        {{ type() }}
+      </span>
+
+      @if (isCommunityPick()) {
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-yellow-300/20 bg-yellow-300/10 px-3 py-1 text-xs tracking-widest text-yellow-200"
+        >
+          <svg
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="text-yellow-300"
+          >
+            <path d="M12 2.75l2.84 5.75 6.34.92-4.59 4.47 1.08 6.31L12 17.21l-5.67 2.99 1.08-6.31-4.59-4.47 6.34-.92L12 2.75z" />
+          </svg>
+          Community Pick
+        </span>
+      }
+    </div>
+
+    <h3 class="mb-3 mt-4 text-left text-2xl font-bold leading-tight md:text-3xl sm:pr-48">
+      {{ title() }}
+    </h3>
+  </div>
+ 
+  <p class="mb-6 text-left text-sm leading-7 text-slate-300 md:text-base">
+    {{ description() }}
+  </p>
+ 
+  <div class="flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
+    <p class="text-left text-sm text-slate-400">
+      Added by <span class="font-medium text-slate-200">{{ author() }}</span>
+      on <span class="text-slate-300">{{ date() | date:'longDate' }}</span>
+    </p>
+
+    <div class="flex flex-wrap items-center gap-3">
+      <button
+        type="button"
+        aria-label="Save resource"
+        class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/40 hover:bg-cyan-400/10 hover:text-cyan-200"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+        </svg>
+        Save
+      </button>
+
+      <a
+        [href]="link()"
+        class="inline-flex w-fit items-center rounded-xl bg-violet-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-violet-500"
+      >
+        View resource
+        <span class="ml-2"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M14 3h7v7" />
+            <path d="M10 14L21 3" />
+            <path d="M21 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          </svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</article>

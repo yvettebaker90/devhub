@@ -10,7 +10,15 @@ export const routes: Routes = [
 		path: 'resources',
 		loadComponent: () =>
 			import(
-				'./features/resources/pages/resource-library/resource-library.page'
-			).then((m) => m.ResourceLibraryPageComponent),
+				'./components/pages/home/home.component'
+			).then((m) => m.HomeComponent),
+	},
+	{
+		path: 'dashboard',
+		loadComponent: () =>
+			import(
+				'./components/pages/dashboard/dashboard.component'
+			).then((m) => m.DashboardComponent),
 	},
 ];
+

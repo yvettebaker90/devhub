@@ -1,0 +1,161 @@
+<div class="flex flex-col gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+	<div class="items-center text-white justify-center">
+  <h1 class="text-3xl font-bold text-white">Your Dashboard</h1>
+
+  <p class="text-lg mt-2 text-slate-300">
+	Here you can find an overview of your activity, saved resources, and contributions.
+  </p></div>
+
+<div class="mx-auto flex w-full max-w-7xl gap-6">
+  
+  <!-- Saved Resources -->
+  <div class="flex items-center gap-4 rounded-xl border border-white/10 bg-[#0b1220] p-5 text-white w-1/3 h-32">
+    
+    <!-- ICON -->
+    <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-400/10 text-yellow-400 border border-yellow-400/30">
+      <!-- Bookmark icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 3h12v18l-6-4-6 4V3z"/>
+      </svg>
+    </div>
+
+    <!-- TEXT -->
+    <div>
+      <p class="text-xs uppercase tracking-widest text-slate-400">Saved Resources</p>
+      <p class="text-2xl font-bold">1</p>
+    </div>
+  </div>
+
+  <!-- Contributed -->
+  <div class="flex items-center gap-4 rounded-xl border border-white/10 bg-[#0b1220] p-5 text-white w-1/3 h-32">
+    
+    <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-green-400/10 text-green-400 border border-green-400/30">
+      <!-- Plus icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12h14"/>
+      </svg>
+    </div>
+
+    <div>
+      <p class="text-xs uppercase tracking-widest text-slate-400">Contributed</p>
+      <p class="text-2xl font-bold">5</p>
+    </div>
+  </div>
+
+  <!-- Community Picks -->
+  <div class="flex items-center gap-4 rounded-xl border border-white/10 bg-[#0b1220] p-5 text-white w-1/3 h-32">
+    
+    <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-400/10 text-blue-400 border border-blue-400/30">
+      <!-- Sparkles / star icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 3l2.5 5.5L20 10l-4 3.5L17 19l-5-3-5 3 1-5.5L4 10l5.5-1.5L12 3z"/>
+      </svg>
+    </div>
+
+    <div>
+      <p class="text-xs uppercase tracking-widest text-slate-400">Community Picks</p>
+      <p class="text-2xl font-bold">3</p>
+    </div>
+  </div>
+
+</div>
+<!-- Add new resource card -->
+<div class="flex flex-col items-center gap-4 rounded-xl border border-dashed border-violet-500/40 bg-[#0b1220] p-5 text-white hover:border-violet-400 hover:bg-[#0f172a] transition cursor-pointer">
+  
+  <!-- ICON -->
+  <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400 border border-violet-500/30">
+    <!-- Plus icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12h14"/>
+    </svg>
+  </div>
+
+  <!-- TEXT -->
+  <div class="flex flex-col items-center gap-1">
+    <p class="text-base font-semibold text-white">
+      Add a new resource
+    </p>
+    <p class="text-sm text-slate-400">
+      Share something valuable with the community
+    </p>
+  </div>
+</div>
+<div class="flex flex-col gap-6">
+<h3 class="text-2xl font-bold text-white mt-8">Continue Learning
+(1 saved)</h3>
+<div>
+  <article
+  class="rounded-md border border-white/10 bg-[#0b1220] p-7 text-white shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition hover:-translate-y-1 hover:border-violet-500/30"
+>
+  <!-- BADGES -->
+  <div class="mb-5 flex items-start justify-between gap-4 tracking-widest">
+    
+    <div class="flex flex-wrap gap-2">
+      <span class="rounded-full border border-blue-400/20 bg-blue-400/10 px-3 py-1 text-xs text-blue-300">
+        Frontend
+      </span>
+
+      <span class="rounded-full border border-pink-400/20 bg-pink-400/10 px-3 py-1 text-xs text-pink-300">
+        English
+      </span>
+
+      <span class="rounded-full border border-yellow-400/20 bg-yellow-400/10 px-3 py-1 text-xs text-yellow-300">
+        Intermediate
+      </span>
+    </div>
+
+    <div class="flex flex-col items-end gap-2">
+      <span class="border-fuchsia-400/20 bg-fuchsia-400/10 text-fuchsia-300 rounded-full border px-3 py-1 text-xs tracking-widest">
+        Article
+      </span>
+    </div>
+  </div>
+
+  <!-- TITLE -->
+  <h3 class="mb-3 text-left text-2xl font-bold leading-tight md:text-3xl">
+    Complete Guide to React Hooks
+  </h3>
+
+  <!-- DESCRIPTION -->
+  <p class="mb-6 text-left text-sm leading-7 text-slate-300 md:text-base">
+    Master all React Hooks with practical examples and real-world use cases.
+    Perfect for developers looking to level up their frontend skills.
+  </p>
+
+  <!-- FOOTER -->
+  <div
+    class="flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between"
+  >
+    <p class="text-left text-sm text-slate-400">
+      Added by <span class="font-medium text-slate-200">Ada Lovelace</span>
+      on <span class="text-slate-300">March 19, 2026</span>
+    </p>
+
+    <a
+      href="#"
+      class="inline-flex w-fit items-center rounded-xl bg-violet-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-violet-500"
+    >
+      View resource
+
+      <span class="ml-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M14 3h7v7" />
+          <path d="M10 14L21 3" />
+          <path d="M21 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+        </svg>
+      </span>
+    </a>
+  </div>
+</article>
+	
+  </div>
+</div>
+</div>
