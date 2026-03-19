@@ -44,7 +44,7 @@ export class FilterSidebarComponent {
     {
       title: 'Level',
       key: 'levels',
-      options: ['Beginner', 'Intermediate', 'Job Ready'],
+      options: ['Beginner', 'Intermediate', 'Advanced'],
     },
   ];
 

@@ -12,6 +12,7 @@ interface ResourceItem {
   level: string;
   link: string;
   type: string;
+  isCommunityPick?: boolean;
 }
 
 @Component({
@@ -41,6 +42,7 @@ export class HomeComponent {
       level: 'Beginner',
       link: 'https://angular.dev',
       type: 'Documentation',
+      isCommunityPick: true,
     },
     {
       title: 'TypeScript Handbook',
@@ -59,6 +61,7 @@ export class HomeComponent {
       level: 'Intermediate',
       link: 'https://css-tricks.com/guides/',
       type: 'Article',
+      isCommunityPick: true,
     },
     {
       title: 'RxJS Documentation',
